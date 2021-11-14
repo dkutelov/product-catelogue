@@ -1,0 +1,32 @@
+.header {
+  background-color: antiquewhite;
+  position: relative;
+  border-bottom: 1px solid var(--color-accent-dark);
+  padding-top: 2em;
+  padding-bottom: 1.5em;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.logo {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.logo h1 {
+  color: var(--color-accent-dark);
+  flex-grow: 1;
+}
+
+.newProductLink {
+  margin-right: 3rem;
+}
+
+.newProductLink a {
+  color: green;
+  text-decoration: none;
+}

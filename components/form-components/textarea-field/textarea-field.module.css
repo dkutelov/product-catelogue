@@ -1,0 +1,30 @@
+.inputGroup {
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.field {
+  margin-top: 0.75rem;
+  height: 80px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border: 1px solid #fbe300;
+  border-radius: 10px;
+  color: #27be94;
+  transition: all 0.3 ease-in-out;
+}
+
+.field:focus,
+.field:active {
+  border: 1px solid #27be94;
+}
+
+.field:focus {
+  outline: none;
+}
+
+.label {
+  display: block;
+  text-align: left;
+}

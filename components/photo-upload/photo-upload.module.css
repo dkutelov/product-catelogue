@@ -1,0 +1,54 @@
+.container {
+  margin-bottom: 0.75em;
+  display: grid;
+  grid-template-columns: 80px 50px auto 1fr;
+  column-gap: 20px;
+}
+
+.dropzone {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fbe300;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropzoneActive {
+  border: 2px solid #27be94;
+}
+
+.uploadIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.buttonWrapper {
+  width: 20px;
+  height: 20px;
+  align-self: center;
+  justify-self: end;
+}
+
+.previewWrapper {
+  align-self: center;
+}
+.spinnerWrapper img {
+  width: 20px;
+  height: 20px;
+}
+
+.label {
+  align-self: center;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.imagePreview {
+  height: 50px;
+  border-radius: 5px;
+}

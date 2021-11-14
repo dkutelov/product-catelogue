@@ -1,0 +1,6 @@
+.buttonWrapper {
+  display: inline-block;
+  border-radius: 3px;
+  background-color: darkgray;
+  cursor: pointer;
+}
