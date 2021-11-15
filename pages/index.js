@@ -12,7 +12,14 @@ export default function Home({ products }) {
 }
 
 export async function getStaticProps() {
-  const products = await productService.getAll();
+  let products = [];
+
+  try {
+    products = await productService.getAll();
+  } catch (error) {
+    console.log(error);
+  }
+
   return {
     props: {
       products,

@@ -85,10 +85,16 @@ h6 {
   padding: 0 0.5rem;
 }
 
+.two-columns {
+  padding: 0 5rem;
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+
 .main-heading {
   text-align: center;
   margin: 6rem 0 3rem;
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--textColor);
 }
 
