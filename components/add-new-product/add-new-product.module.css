@@ -73,13 +73,14 @@ input[type='radio']:checked + .radioSquare::before {
 .button {
   color: #424242;
   background-color: #fbe300;
-  padding: 10px 20px;
+  padding: 16px 30px;
   border-radius: 5px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s;
   border: none;
   margin-top: 1em;
+  font-size: 1.5em;
 }
 
 .button:hover {

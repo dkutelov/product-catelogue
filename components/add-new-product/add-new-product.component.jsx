@@ -11,30 +11,34 @@ import ProductVariantsList from '../product-variants/product-variants-list.compo
 import { categories } from '../../data/categories';
 
 function AddNewProduct() {
-  let variantsCount = 0;
-
   const [formData, setFormData] = useState({
     name: '',
     price: 0,
     description: '',
+    link: '',
     imageUrl: '',
     category: '',
     productVariants: [],
   });
 
+  const [resetVariants, setResetVariants] = useState(false);
+
   const createProduct = (e) => {
     e.preventDefault();
 
-    variantsCount = 0;
-    setFormData({
-      name: '',
-      price: 0,
-      description: '',
-      imageUrl: '',
-      category: '',
-      productVariants: [],
+    productService.add(formData).then(() => {
+      setResetVariants(true);
+      setFormData({
+        name: '',
+        price: 0,
+        description: '',
+        link: '',
+        imageUrl: '',
+        category: '',
+        productVariants: [],
+      });
+      setResetVariants(false);
     });
-    productService.add(formData);
   };
 
   const handleInputChange = (e) => {
@@ -82,13 +86,20 @@ function AddNewProduct() {
           handleInputChange={handleInputChange}
           type='number'
         />
+        <InputField
+          label='Линк'
+          name='link'
+          value={formData.link}
+          handleInputChange={handleInputChange}
+          type='text'
+          required={false}
+        />
         <TextareaField
           label='Описание'
           name='description'
           value={formData.description}
           handleInputChange={handleInputChange}
         />
-
         <SelectField
           label='Категория'
           name='category'
@@ -96,9 +107,10 @@ function AddNewProduct() {
           handleInputChange={handleInputChange}
           options={categories}
         />
-
-        <ProductVariantsList handleChange={handleVariantChange} />
-
+        <ProductVariantsList
+          handleChange={handleVariantChange}
+          resetVariants={resetVariants}
+        />
         <button type='submit' className={styles.button}>
           Запази
         </button>

@@ -1,6 +1,20 @@
+.variantWrapper {
+  border: 1px solid #fbe300;
+  padding: 1.5rem 1em 0.75em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.variantTitle {
+  margin-bottom: 1em;
+}
+
 .buttonWrapper {
-  display: inline-block;
-  border-radius: 3px;
-  background-color: darkgray;
+  text-align: left;
+}
+
+.addButton {
+  display: block;
+  margin-top: 2rem;
   cursor: pointer;
 }
