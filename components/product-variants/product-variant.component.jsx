@@ -31,11 +31,12 @@ function ProductVariant({ id, handleChange, shouldReset }) {
     handleChange(id, formData);
   };
 
-  const handleImageChange = (imageUrl) => {
+  const handleImageUrl = (imageUrl) => {
     setFormData((prevData) => ({
       ...prevData,
       imageUrl,
     }));
+
     handleChange(id, formData);
   };
 
@@ -55,10 +56,7 @@ function ProductVariant({ id, handleChange, shouldReset }) {
         handleInputChange={handleNameChange}
         required={false}
       />
-      <PhotoUpload
-        handleImageUrl={handleImageChange}
-        shouldReset={shouldReset}
-      />
+      <PhotoUpload handleImageUrl={handleImageUrl} shouldReset={shouldReset} />
     </div>
   );
 }
