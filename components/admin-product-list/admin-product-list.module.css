@@ -11,12 +11,14 @@
 }
 
 .buttonWrapper {
+  margin-left: 0.5em;
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 12.5px;
+  height: 12.5px;
+  cursor: pointer;
 }
 
 .buttonWrapper img {
-  width: 15px;
-  height: 15px;
+  width: 12.5px;
+  height: 12.5px;
 }

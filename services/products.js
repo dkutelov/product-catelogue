@@ -43,13 +43,13 @@ export default {
   //       return err;
   //     }
   //   },
-  //   delete: async (id) => {
-  //     try {
-  //       await request.delete(urlBuilder(`destinations/${id}`));
-  //     } catch (err) {
-  //       return err;
-  //     }
-  //   },
+  delete: async (id) => {
+    try {
+      await request.delete(urlBuilder(`products/${id}`));
+    } catch (err) {
+      return err;
+    }
+  },
   //   getMyDestinations: async (userId) => {
   //     try {
   //       const items = await request.get(urlBuilder('destinations'));

@@ -17,19 +17,24 @@ function AdminPage({ products }) {
     setLatestProducts(products);
   }, [products]);
 
+  const deleteProduct = async (id) => {
+    await productService.delete(id);
+    updateLatestProducts();
+  };
+
   return (
     <div className='container two-columns'>
       <AddNewProduct updateLatestProducts={updateLatestProducts} />
-      <AdminProductList products={latestProducts} />
+      <AdminProductList
+        products={latestProducts}
+        deleteProduct={deleteProduct}
+      />
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
   let products = await productService.getAll();
-  // products = products.map((product) => {
-  //   product.id, product.name;
-  // });
   return {
     props: {
       products: products,
