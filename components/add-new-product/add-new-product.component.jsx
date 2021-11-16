@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './add-new-product.module.css';
 import productService from '../../services/products';
@@ -10,7 +10,7 @@ import ProductVariantsList from '../product-variants/product-variants-list.compo
 
 import { categories } from '../../data/categories';
 
-function AddNewProduct({ updateLatestProducts }) {
+function AddNewProduct({ updatedProduct, updateLatestProducts }) {
   const [formData, setFormData] = useState({
     name: '',
     price: 0,
@@ -22,13 +22,24 @@ function AddNewProduct({ updateLatestProducts }) {
     updatedAt: Date.now(),
   });
 
-  const [resetVariants, setResetVariants] = useState(false);
+  const [shouldReset, setShouldReset] = useState(false);
+
+  useEffect(() => {
+    if (updatedProduct !== null) {
+      formData.name = updatedProduct.name;
+      formData.price = updatedProduct.price;
+      formData.description = updatedProduct.description;
+      formData.link = updatedProduct.link;
+      formData.imageUrl = updatedProduct.imageUrl;
+      formData.productVariants = updatedProduct.productVariants;
+    }
+  }, [updatedProduct]);
 
   const createProduct = (e) => {
     e.preventDefault();
 
     productService.add(formData).then(() => {
-      setResetVariants(true);
+      setShouldReset(true);
       setFormData({
         name: '',
         price: 0,
@@ -38,7 +49,7 @@ function AddNewProduct({ updateLatestProducts }) {
         category: '',
         productVariants: [],
       });
-      setResetVariants(false);
+      setShouldReset(false);
       updateLatestProducts();
     });
   };
@@ -75,7 +86,10 @@ function AddNewProduct({ updateLatestProducts }) {
     <div>
       <h1 className='main-heading'>Нов Продукт</h1>
       <div className={styles.formWrapper}>
-        <PhotoUpload handleImageUrl={handleImageUrl} />
+        <PhotoUpload
+          handleImageUrl={handleImageUrl}
+          shouldReset={shouldReset}
+        />
         <form onSubmit={createProduct}>
           <InputField
             label='Име'
@@ -113,7 +127,7 @@ function AddNewProduct({ updateLatestProducts }) {
           />
           <ProductVariantsList
             handleChange={handleVariantChange}
-            resetVariants={resetVariants}
+            resetVariants={shouldReset}
           />
           <button type='submit' className={styles.button}>
             Запази

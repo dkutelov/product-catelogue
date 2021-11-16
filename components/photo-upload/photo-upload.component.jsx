@@ -10,7 +10,7 @@ function getFileExtension(filename) {
   return filename.slice(filename.lastIndexOf(('.' - 1) >>> 0) + 2);
 }
 
-const PhotoUpload = ({ handleImageUrl }) => {
+const PhotoUpload = ({ handleImageUrl, shouldReset }) => {
   const [files, setFiles] = useState([]);
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -26,6 +26,12 @@ const PhotoUpload = ({ handleImageUrl }) => {
       uploadFile();
     }
   }, [files]);
+
+  useEffect(() => {
+    if (shouldReset) {
+      handleCancelCrop();
+    }
+  }, [shouldReset]);
 
   const uploadFile = async () => {
     const data = new FormData();

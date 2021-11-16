@@ -5,10 +5,6 @@ import PhotoUpload from '../photo-upload/photo-upload.component';
 import styles from './product-variant.module.css';
 
 function ProductVariant({ id, handleChange, shouldReset }) {
-  const [name, setName] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [variantLink, setVariantLink] = useState('');
-
   const [formData, setFormData] = useState({
     id,
     name: '',
@@ -36,7 +32,10 @@ function ProductVariant({ id, handleChange, shouldReset }) {
   };
 
   const handleImageChange = (imageUrl) => {
-    setImageUrl(imageUrl);
+    setFormData((prevData) => ({
+      ...prevData,
+      imageUrl,
+    }));
     handleChange(id, formData);
   };
 
@@ -56,7 +55,10 @@ function ProductVariant({ id, handleChange, shouldReset }) {
         handleInputChange={handleNameChange}
         required={false}
       />
-      <PhotoUpload handleImageUrl={handleImageChange} />
+      <PhotoUpload
+        handleImageUrl={handleImageChange}
+        shouldReset={shouldReset}
+      />
     </div>
   );
 }

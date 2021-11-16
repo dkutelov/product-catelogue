@@ -1,6 +1,6 @@
 import styles from './admin-product-list.module.css';
 
-function AdminProductList({ products, deleteProduct }) {
+function AdminProductList({ products, deleteProduct, updateProduct }) {
   return (
     <div>
       <h3 className='main-heading'>Последни Продукти</h3>
@@ -11,7 +11,12 @@ function AdminProductList({ products, deleteProduct }) {
             {p.name.substring(0, 85)}
 
             <div className={styles.buttonWrapper}>
-              <img src='/icons/edit.svg' onClick={() => {}} />
+              <img
+                src='/icons/edit.svg'
+                onClick={() => {
+                  updateProduct(p.id);
+                }}
+              />
             </div>
             <div className={styles.buttonWrapper}>
               <img

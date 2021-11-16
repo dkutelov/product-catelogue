@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
 import productService from '../services/products';
 
 export default function Home({ products }) {
   return (
     <ul>
       {products.map((p) => (
-        <li key={p.id}>{p.name}</li>
+        <li key={p.id}>
+          {p.name}
+          <img src={p.imageUrl} alt='' height={50} />
+        </li>
       ))}
     </ul>
   );

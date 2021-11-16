@@ -7,6 +7,7 @@ import productService from '../services/products';
 
 function AdminPage({ products }) {
   const [latestProducts, setLatestProducts] = useState([]);
+  const [updatedProduct, setUpdatedProduct] = useState(null);
 
   const updateLatestProducts = async () => {
     const updatedProduts = await productService.getAll();
@@ -22,12 +23,21 @@ function AdminPage({ products }) {
     updateLatestProducts();
   };
 
+  const updateProduct = async (id) => {
+    const product = await productService.getOneById(id);
+    setUpdatedProduct(product);
+  };
+
   return (
     <div className='container two-columns'>
-      <AddNewProduct updateLatestProducts={updateLatestProducts} />
+      <AddNewProduct
+        updateLatestProducts={updateLatestProducts}
+        updatedProduct={updatedProduct}
+      />
       <AdminProductList
         products={latestProducts}
         deleteProduct={deleteProduct}
+        updateProduct={updateProduct}
       />
     </div>
   );
