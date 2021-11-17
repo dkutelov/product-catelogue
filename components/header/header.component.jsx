@@ -9,7 +9,7 @@ const Header = () => {
         <ul className={styles.navContainer}>
           <li className={styles.logo}>
             <Link href='/'>
-              <h1>Каталог Бебешки Стоки</h1>
+              <h1>Разпродажба Бебешки Стоки</h1>
             </Link>
           </li>
           <li className={styles.newProductLink}>

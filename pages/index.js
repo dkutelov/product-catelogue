@@ -1,15 +1,11 @@
+import ProductList from '../components/product-list/product-list.component';
 import productService from '../services/products';
 
 export default function Home({ products }) {
   return (
-    <ul>
-      {products.map((p) => (
-        <li key={p.id}>
-          {p.name}
-          <img src={p.imageUrl} alt='' height={50} />
-        </li>
-      ))}
-    </ul>
+    <div className='main-container'>
+      {products.length !== 0 && <ProductList products={products} />}
+    </div>
   );
 }
 

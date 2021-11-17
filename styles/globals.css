@@ -85,6 +85,18 @@ h6 {
   padding: 0 0.5rem;
 }
 
+.main-container {
+  padding: 1em;
+  background-color: #ededed;
+}
+
+@media screen and (min-width: 800px) {
+  .main-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .two-columns {
   padding: 0 5rem;
   display: grid;

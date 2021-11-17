@@ -1,0 +1,33 @@
+.card {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  column-gap: 15px;
+  margin-bottom: 0.5em;
+}
+
+.imageWrapper {
+  border: 1px solid #ededed;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.title {
+  text-align: left;
+  font-weight: 200;
+  font-size: 0.85em;
+}
+
+.link {
+  font-size: 0.65em;
+  color: var(--textColor);
+}
