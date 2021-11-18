@@ -22,3 +22,13 @@
   width: 12.5px;
   height: 12.5px;
 }
+
+.productsWrapper {
+  max-width: 500px;
+}
+
+@media screen and (min-width: 800px) {
+  .productsWrapper {
+    margin: 0 auto;
+  }
+}

@@ -9,16 +9,17 @@ function ProductVariant({ id, handleChange, shouldReset }) {
     id,
     name: '',
     link: '',
-    imageUrl: '',
   });
+
+  const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
     if (shouldReset) {
       setFormData({
         name: '',
         link: '',
-        imageUrl: '',
       });
+      setImageUrl(null);
     }
   }, [shouldReset]);
 
@@ -28,16 +29,13 @@ function ProductVariant({ id, handleChange, shouldReset }) {
       [e.target.name]: e.target.value,
     }));
 
-    handleChange(id, formData);
+    handleChange(id, { ...formData, imageUrl });
   };
 
   const handleImageUrl = (imageUrl) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      imageUrl,
-    }));
-
-    handleChange(id, formData);
+    //console.log('from variant', imageUrl);
+    setImageUrl(imageUrl);
+    handleChange(id, { imageUrl, ...formData });
   };
 
   return (

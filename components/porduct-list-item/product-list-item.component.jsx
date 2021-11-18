@@ -12,7 +12,7 @@ function ProductListItem({ product }) {
   return (
     <li className={styles.card}>
       <div className={styles.cardWrapper}>
-        <div class={styles.imageWrapper}>
+        <div className={styles.imageWrapper}>
           <img
             className={styles.image}
             src={product.imageUrl}

@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import AddNewProduct from '../components/add-new-product/add-new-product.component';
 import AdminProductList from '../components/admin-product-list/admin-product-list.component';
-
 import productService from '../services/products';
 
-function AdminPage({ products }) {
+function Edit({ products }) {
   const [latestProducts, setLatestProducts] = useState([]);
-  const [updatedProduct, setUpdatedProduct] = useState(null);
 
   const updateLatestProducts = async () => {
     const updatedProduts = await productService.getAll();
@@ -29,11 +26,7 @@ function AdminPage({ products }) {
   };
 
   return (
-    <div className='container two-columns'>
-      <AddNewProduct
-        updateLatestProducts={updateLatestProducts}
-        updatedProduct={updatedProduct}
-      />
+    <div className='container'>
       <AdminProductList
         products={latestProducts}
         deleteProduct={deleteProduct}
@@ -43,13 +36,36 @@ function AdminPage({ products }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  let products = await productService.getAll();
+export async function getStaticProps() {
+  let products = [];
+
+  try {
+    products = await productService.getAll();
+  } catch (error) {
+    console.log(error);
+  }
+
+  // sort by category
+  // products.sort((a, b) => {
+  //   return parseInt(b.category) - parseInt(a.category);
+  // });
+
   return {
     props: {
-      products: products,
+      products,
     },
   };
 }
 
-export default AdminPage;
+export default Edit;
+
+// useEffect(() => {
+//     if (updatedProduct !== null) {
+//       formData.name = updatedProduct.name;
+//       formData.price = updatedProduct.price;
+//       formData.description = updatedProduct.description;
+//       formData.link = updatedProduct.link;
+//       formData.imageUrl = updatedProduct.imageUrl;
+//       formData.productVariants = updatedProduct.productVariants;
+//     }
+//   }, [updatedProduct]);

@@ -2,7 +2,7 @@ import styles from './admin-product-list.module.css';
 
 function AdminProductList({ products, deleteProduct, updateProduct }) {
   return (
-    <div>
+      <div className={ styles.productsWrapper}>
       <h3 className='main-heading'>Последни Продукти</h3>
 
       <ul className={styles.productList}>

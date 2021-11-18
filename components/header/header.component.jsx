@@ -13,7 +13,10 @@ const Header = () => {
             </Link>
           </li>
           <li className={styles.newProductLink}>
-            <Link href='/new-product'>Добави Продукт</Link>
+            <Link href='/new'>Нов</Link>
+          </li>
+          <li className={styles.newProductLink}>
+            <Link href='/edit'>Редакция</Link>
           </li>
         </ul>
       </nav>

@@ -10,7 +10,7 @@ import ProductVariantsList from '../product-variants/product-variants-list.compo
 
 import { categories } from '../../data/categories';
 
-function AddNewProduct({ updatedProduct, updateLatestProducts }) {
+function AddNewProduct() {
   const [formData, setFormData] = useState({
     name: '',
     price: 0,
@@ -24,17 +24,6 @@ function AddNewProduct({ updatedProduct, updateLatestProducts }) {
 
   const [shouldReset, setShouldReset] = useState(false);
 
-  useEffect(() => {
-    if (updatedProduct !== null) {
-      formData.name = updatedProduct.name;
-      formData.price = updatedProduct.price;
-      formData.description = updatedProduct.description;
-      formData.link = updatedProduct.link;
-      formData.imageUrl = updatedProduct.imageUrl;
-      formData.productVariants = updatedProduct.productVariants;
-    }
-  }, [updatedProduct]);
-
   const createProduct = (e) => {
     e.preventDefault();
 
@@ -43,6 +32,7 @@ function AddNewProduct({ updatedProduct, updateLatestProducts }) {
       setFormData({
         name: '',
         price: 0,
+        regPrice: 0,
         description: '',
         link: '',
         imageUrl: '',
@@ -50,7 +40,6 @@ function AddNewProduct({ updatedProduct, updateLatestProducts }) {
         productVariants: [],
       });
       setShouldReset(false);
-      updateLatestProducts();
     });
   };
 
@@ -69,6 +58,7 @@ function AddNewProduct({ updatedProduct, updateLatestProducts }) {
   };
 
   const handleVariantChange = (variantIndex, variantData) => {
+    //console.log('variantData', variantData);
     let variant = formData.productVariants[variantIndex];
     // index does not exists
     if (!variant) {
@@ -98,9 +88,16 @@ function AddNewProduct({ updatedProduct, updateLatestProducts }) {
             handleInputChange={handleInputChange}
           />
           <InputField
-            label='Цена'
+            label='Намалена Цена'
             name='price'
             value={formData.price}
+            handleInputChange={handleInputChange}
+            type='number'
+          />
+          <InputField
+            label='Редовна Цена'
+            name='regPrice'
+            value={formData.regPrice}
             handleInputChange={handleInputChange}
             type='number'
           />
