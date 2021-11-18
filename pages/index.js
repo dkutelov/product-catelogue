@@ -18,6 +18,11 @@ export async function getStaticProps() {
     console.log(error);
   }
 
+  // sort by category
+  // products.sort((a, b) => {
+  //   return parseInt(b.category) - parseInt(a.category);
+  // });
+
   return {
     props: {
       products,

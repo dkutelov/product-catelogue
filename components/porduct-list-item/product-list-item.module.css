@@ -101,3 +101,31 @@
   border-top: 1px solid #ededed;
   margin: 1em 0;
 }
+
+.regPrice {
+  margin-right: 1em;
+  font-weight: 300;
+  position: relative;
+}
+
+.regPrice::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  right: 5px;
+  height: 2px;
+  background-color: darkorange;
+  transform: rotate(45deg);
+}
+
+.regPrice::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  right: 5px;
+  height: 2px;
+  background-color: darkorange;
+  transform: rotate(-45deg);
+}

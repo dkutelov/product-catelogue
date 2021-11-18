@@ -8,7 +8,7 @@ function ProductListItem({ product }) {
   const toggleDescription = () => {
     setIsDescriptionVisible(!isDescriptionVisible);
   };
-  console.log(product);
+  //   console.log(product);
   return (
     <li className={styles.card}>
       <div className={styles.cardWrapper}>
@@ -21,9 +21,14 @@ function ProductListItem({ product }) {
         </div>
         <div className={styles.content}>
           <h3 className={styles.title}>{product.name}</h3>
-          <div class={styles.price}>{product.price} лв</div>
+          <div class={styles.price}>
+            {product.regPrice && (
+              <span className={styles.regPrice}>{product.regPrice}лв</span>
+            )}
+            <span>{product.price}лв</span>
+          </div>
           <div className={styles.innerWrapper}>
-            <a className={styles.link} href={product.link}>
+            <a className={styles.link} href={product.link} target='_blank'>
               още в еМаг
             </a>
             <div
@@ -48,8 +53,8 @@ function ProductListItem({ product }) {
         <>
           <div className={styles.separator}></div>
           <ul className={styles.variantsWrapper}>
-            {product.productVariants.map((variant) => (
-              <ProductListVariant key={variant.id} variant={variant} />
+            {product.productVariants.map((variant, index) => (
+              <ProductListVariant key={index} variant={variant} />
             ))}
           </ul>
         </>
