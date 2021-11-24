@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import styles from './product-variant.module.css';
 
 function ProductListVariant({ variant }) {
@@ -5,7 +7,8 @@ function ProductListVariant({ variant }) {
   return (
     <li className={styles.card}>
       <div class={styles.imageWrapper}>
-        <img
+        <Image
+          layout='fill'
           className={styles.image}
           src={variant.imageUrl}
           alt={variant.name}

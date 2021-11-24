@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Image from 'next/image';
+
 import ProductListVariant from '../product-variant/product-variant.component';
 import styles from './product-list-item.module.css';
 
@@ -13,7 +15,8 @@ function ProductListItem({ product }) {
     <li className={styles.card}>
       <div className={styles.cardWrapper}>
         <div className={styles.imageWrapper}>
-          <img
+          <Image
+            layout='fill'
             className={styles.image}
             src={product.imageUrl}
             alt={product.name}
@@ -21,7 +24,7 @@ function ProductListItem({ product }) {
         </div>
         <div className={styles.content}>
           <h3 className={styles.title}>{product.name}</h3>
-          <div class={styles.price}>
+          <div className={styles.price}>
             {product.regPrice && (
               <span className={styles.regPrice}>{product.regPrice}лв</span>
             )}
