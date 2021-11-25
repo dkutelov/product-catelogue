@@ -8,6 +8,10 @@
   border-radius: 5px;
   padding: 0.75em;
   margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: 36% 27% 27% 1fr;
+  column-gap: 10px;
+  align-items: center;
 }
 
 .buttonWrapper {
@@ -24,11 +28,41 @@
 }
 
 .productsWrapper {
-  max-width: 500px;
+  width: 100%;
 }
 
 @media screen and (min-width: 800px) {
   .productsWrapper {
     margin: 0 auto;
+    max-width: 1400px;
+    width: 70%;
   }
+}
+
+.productTitle {
+  font-size: 0.85em;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priceTag {
+  font-size: 0.85em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.priceWrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+
+.inputWrapper {
+  margin: 0;
+}
+
+.inputWrapper div {
+  margin: 0;
 }

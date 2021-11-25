@@ -3,12 +3,15 @@ import React from 'react';
 import styles from './input-field.module.css';
 
 function InputField({
-  label,
+  label = '',
   name,
   value,
   handleInputChange,
   type = 'text',
   required = true,
+  placeholder = '',
+  onFieldLeave = () => {},
+  caputureEnter = () => {},
 }) {
   return (
     <div className={styles.inputGroup}>
@@ -21,8 +24,11 @@ function InputField({
         name={name}
         value={value}
         onChange={handleInputChange}
+        onBlur={onFieldLeave}
+        onKeyDown={caputureEnter}
         required={required}
         className={styles.field}
+        placeholder={placeholder}
       />
     </div>
   );

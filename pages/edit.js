@@ -30,13 +30,13 @@ function Edit({ products }) {
       <AdminProductList
         products={latestProducts}
         deleteProduct={deleteProduct}
-        updateProduct={updateProduct}
+        updateLatestProducts={updateLatestProducts}
       />
     </div>
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
   let products = [];
 
   try {
@@ -44,11 +44,6 @@ export async function getStaticProps() {
   } catch (error) {
     console.log(error);
   }
-
-  // sort by category
-  // products.sort((a, b) => {
-  //   return parseInt(b.category) - parseInt(a.category);
-  // });
 
   return {
     props: {
@@ -58,14 +53,3 @@ export async function getStaticProps() {
 }
 
 export default Edit;
-
-// useEffect(() => {
-//     if (updatedProduct !== null) {
-//       formData.name = updatedProduct.name;
-//       formData.price = updatedProduct.price;
-//       formData.description = updatedProduct.description;
-//       formData.link = updatedProduct.link;
-//       formData.imageUrl = updatedProduct.imageUrl;
-//       formData.productVariants = updatedProduct.productVariants;
-//     }
-//   }, [updatedProduct]);

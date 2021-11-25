@@ -32,17 +32,18 @@ export default {
       return err;
     }
   },
-  //   update: async (itemId, itemObj) => {
-  //     try {
-  //       const updatedItem = await request.patch(
-  //         urlBuilder(`destinations/${itemId}`),
-  //         itemObj
-  //       );
-  //       return updatedItem;
-  //     } catch (err) {
-  //       return err;
-  //     }
-  //   },
+  update: async (id, data) => {
+    console.log(data);
+    try {
+      const updatedProduct = await request.patch(
+        urlBuilder(`products/${id}`),
+        data
+      );
+      return updatedProduct;
+    } catch (err) {
+      return err;
+    }
+  },
   delete: async (id) => {
     try {
       await request.delete(urlBuilder(`products/${id}`));

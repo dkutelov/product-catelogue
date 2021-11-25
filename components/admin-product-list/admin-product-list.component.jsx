@@ -1,32 +1,18 @@
 import styles from './admin-product-list.module.css';
+import AdminProductListItem from './admin-product-list-item.component';
 
-function AdminProductList({ products, deleteProduct, updateProduct }) {
+function AdminProductList({ products, deleteProduct, updateLatestProducts }) {
   return (
-      <div className={ styles.productsWrapper}>
-      <h3 className='main-heading'>Последни Продукти</h3>
+    <div className={styles.productsWrapper}>
+      <h3 className='main-heading'>Продукти</h3>
 
       <ul className={styles.productList}>
         {products.map((p) => (
-          <li key={p.id} className={styles.productItem}>
-            {p.name.substring(0, 85)}
-
-            <div className={styles.buttonWrapper}>
-              <img
-                src='/icons/edit.svg'
-                onClick={() => {
-                  updateProduct(p.id);
-                }}
-              />
-            </div>
-            <div className={styles.buttonWrapper}>
-              <img
-                src='/icons/cancelRed.svg'
-                onClick={() => {
-                  deleteProduct(p.id);
-                }}
-              />
-            </div>
-          </li>
+          <AdminProductListItem
+            product={p}
+            key={p.id}
+            updateProducts={updateLatestProducts}
+          />
         ))}
       </ul>
     </div>

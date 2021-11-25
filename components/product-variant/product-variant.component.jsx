@@ -6,7 +6,7 @@ function ProductListVariant({ variant }) {
   //console.log(variant);
   return (
     <li className={styles.card}>
-      <div class={styles.imageWrapper}>
+      <div className={styles.imageWrapper}>
         <Image
           layout='fill'
           className={styles.image}
